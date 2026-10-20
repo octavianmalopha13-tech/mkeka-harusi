@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17365d">
+<title>Mkeka wa Harusi</title>
+<style>
+:root{--navy:#17365d;--navy2:#244b78;--gold:#d6a84f;--bg:#f4f6fa;--ink:#172235;--muted:#68758a;--line:#e2e8f0;--green:#18794e;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;padding:22px 16px 28px;border-radius:0 0 24px 24px}
+.wrap{max-width:1000px;margin:auto} .brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:22px}
+h1{font-size:24px;margin:0}header p{margin:5px 0 0;color:#dbe6f5;font-size:13px}
+main{max-width:1000px;margin:-12px auto 40px;padding:0 14px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{background:white;border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:0 4px 14px #162a4508;min-width:0}
+.stat .label{font-size:12px;color:var(--muted)}.stat .value{font-size:clamp(14px,3.4vw,22px);font-weight:800;margin-top:7px;overflow-wrap:anywhere}.stat:nth-child(2) .value{color:var(--green)}.stat:nth-child(3) .value{color:#9a6700}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;margin-top:14px;padding:16px;box-shadow:0 4px 14px #162a4508}
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}h2{font-size:17px;margin:0}
+button,.button{border:0;border-radius:11px;padding:11px 14px;font:inherit;font-size:13px;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none}
+.primary{background:var(--gold);color:#172235}.dark{background:var(--navy);color:white}.light{background:#edf2f8;color:var(--navy)}.danger{background:#fff0ef;color:var(--red)}button:active{transform:scale(.98)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#435168;margin-bottom:6px}input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;font-size:14px;background:white;color:var(--ink)}input:focus{outline:2px solid #d6a84f88;border-color:var(--gold)}.full{grid-column:1/-1}.formbuttons{display:flex;gap:8px}.formbuttons button{flex:1}
+.searchrow{display:flex;gap:8px;margin:12px 0}.searchrow input{flex:1}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:690px;font-size:13px}th{background:#edf2f8;color:#42516a;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.03em}td,th{padding:12px 10px;border-bottom:1px solid var(--line)}tbody tr:last-child td{border-bottom:0}td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.person{font-weight:750}.phone{font-size:12px;color:var(--muted);margin-top:3px}.pill{display:inline-block;padding:4px 8px;border-radius:99px;font-size:11px;font-weight:800;white-space:nowrap}.paid{background:#e4f6ec;color:#18794e}.partial{background:#fff3d6;color:#8a5b00}.unpaid{background:#ffebe9;color:#b42318}.rowactions{display:flex;gap:5px}.rowactions button{padding:7px 9px;font-size:12px}
+.empty{text-align:center;padding:28px 10px;color:var(--muted);font-size:13px}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:10px 20px 30px}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172235;color:white;padding:11px 16px;border-radius:12px;font-size:13px;box-shadow:0 5px 25px #0002;display:none;z-index:10;max-width:90vw}
+@media(max-width:520px){header{padding-top:18px}.stats{gap:7px}.stat{padding:11px 9px;border-radius:13px}.stat .label{font-size:10px}.panel{padding:13px}.panelhead{align-items:flex-start}form{grid-template-columns:1fr}.full{grid-column:auto}.actions button{font-size:12px;padding:10px 8px}.formbuttons{grid-column:auto}}
+@media print{body{background:white}header{background:white;color:#111;padding:0 0 12px;border-radius:0}header p{color:#333}main{margin:0;padding:0;max-width:none}.stats{margin-bottom:12px}.panel{box-shadow:none;border:0;padding:8px 0;margin-top:8px}.noprint,form,.searchrow,.rowactions,.actions,#toast,footer{display:none!important}.tablewrap{overflow:visible;border:1px solid #aaa}table{min-width:0;font-size:10px}th,td{padding:6px 5px;border-color:#bbb}th{background:#eee!important;color:#111}.stat{box-shadow:none;border:1px solid #aaa;padding:8px}.stat .value{font-size:14px}h1{font-size:20px}h2{font-size:14px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="brand"><div class="logo">M</div><div><h1>Mkeka wa Harusi</h1><p id="subtitle">Kamati ya harusi · Orodha ya michango</p></div></div></div></header>
+<main>
+  <section class="stats" aria-label="Muhtasari">
+    <div class="stat"><div class="label">Jumla ya ahadi</div><div class="value" id="totalPromised">TSh 0</div></div>
+    <div class="stat"><div class="label">Jumla iliyolipwa</div><div class="value" id="totalPaid">TSh 0</div></div>
+    <div class="stat"><div class="label">Baki la michango</div><div class="value" id="totalBalance">TSh 0</div></div>
+  </section>
+
+  <section class="panel noprint">
+    <div class="panelhead"><h2 id="formTitle">Ongeza mchangiaji</h2><span class="pill partial" id="countPill">Watu 0</span></div>
+    <form id="personForm">
+      <input type="hidden" id="editId">
+      <div><label for="name">Jina kamili *</label><input id="name" required maxlength="100" placeholder="Mf. Amina Juma"></div>
+      <div><label for="phone">Namba ya simu</label><input id="phone" inputmode="tel" maxlength="30" placeholder="Mf. 07xx xxx xxx"></div>
+      <div><label for="promised">Kiasi alichoahidi (TSh) *</label><input id="promised" type="number" min="0" step="1" required placeholder="100000"></div>
+      <div><label for="paid">Kiasi alicholipa (TSh)</label><input id="paid" type="number" min="0" step="1" value="0" placeholder="0"></div>
+      <div class="formbuttons full"><button class="primary" type="submit" id="saveBtn">＋ Hifadhi mchangiaji</button><button class="light" type="button" id="cancelEdit" hidden>Ghairi</button></div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <div class="panelhead"><h2>Orodha ya kamati</h2><span class="hint" style="margin:0">TSh · Tanzania</span></div>
+    <div class="searchrow noprint"><input id="search" placeholder="Tafuta jina au namba ya simu…" aria-label="Tafuta jina au namba ya simu"><button class="light" id="clearSearch" type="button">Futa</button></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>#</th><th>Mchangiaji / Simu</th><th>Ahadi (TSh)</th><th>Amelipa (TSh)</th><th>Salio (TSh)</th><th>Hali</th><th class="noprint">Vitendo</th></tr></thead>
+      <tbody id="peopleBody"></tbody>
+    </table><div id="empty" class="empty">Bado hakuna majina. Tumia fomu hapo juu kuongeza mchangiaji wa kwanza. 😎</div></div>
+    <div class="actions noprint" style="margin-top:14px">
+      <button class="dark" id="downloadCsv" type="button">⇩ Pakua Excel/CSV</button>
+      <button class="light" id="downloadPdf" type="button">▤ Pakua PDF</button>
+      <button class="primary" id="shareWhatsApp" type="button">↗ Shiriki WhatsApp</button>
+    </div>
+    <p class="hint noprint">PDF: bonyeza “Pakua PDF”, kisha chagua <b>Save as PDF / Hifadhi kama PDF</b> kwenye dirisha la kuchapisha. CSV inaweza kufunguliwa kwa Excel au Google Sheets. Data inahifadhiwa kwenye kifaa hiki kupitia browser; itumie kwenye kifaa kilekile ili kuona orodha yako.</p>
+  </section>
+</main>
+<footer>Mkeka wa Harusi · Tengeneza orodha, fuatilia michango, kisha shiriki na kamati.</footer>
+<div id="toast" role="status"></div>
+<script>
+(function(){
+  const KEY='mkekaHarusi_v1';
+  let people=[];
+  const $=id=>document.getElementById(id);
+  const money=n=>'TSh '+Number(n||0).toLocaleString('en-US');
+  const num=v=>Math.max(0,Math.floor(Number(v)||0));
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display='none',2500)}
+  function persist(){try{localStorage.setItem(KEY,JSON.stringify(people))}catch(e){toast('Browser haikuweza kuhifadhi data. Pakua nakala ya CSV.')} render()}
+  function status(p){const b=p.promised-p.paid;if(b<=0)return ['Amemaliza','paid'];if(p.paid>0)return ['Amelipa sehemu','partial'];return ['Hajalipa','unpaid']}
+  function render(){
+    const promised=people.reduce((s,p)=>s+p.promised,0),paid=people.reduce((s,p)=>s+p.paid,0);
+    $('totalPromised').textContent=money(promised);$('totalPaid').textContent=money(paid);$('totalBalance').textContent=money(promised-paid);$('countPill').textContent='Watu '+people.length;
+    const q=$('search').value.trim().toLowerCase();
+    const list=people.filter(p=>(p.name+' '+p.phone).toLowerCase().includes(q));
+    $('peopleBody').innerHTML=list.map((p,i)=>{const [label,cls]=status(p);return `<tr>
+      <td>${i+1}</td><td><div class="person">${esc(p.name)}</div><div class="phone">${esc(p.phone||'—')}</div></td>
+      <td class="num">${money(p.promised).replace('TSh ','')}</td><td class="num">${money(p.paid).replace('TSh ','')}</td><td class="num"><b>${money(Math.max(0,p.promised-p.paid)).replace('TSh ','')}</b></td><td><span class="pill ${cls}">${label}</span></td>
+      <td class="noprint"><div class="rowactions"><button class="light" data-edit="${esc(p.id)}" type="button">Hariri</button><button class="danger" data-delete="${esc(p.id)}" type="button">Futa</button></div></td></tr>`}).join('');
+    $('empty').style.display=list.length?'none':'block';
+    if(q && !list.length)$('empty').textContent='Hakuna jina linalolingana na utafutaji huo.';
+    else $('empty').textContent=people.length?'Hakuna matokeo.':'Bado hakuna majina. Tumia fomu hapo juu kuongeza mchangiaji wa kwanza. 😎';
+  }
+  function resetForm(){ $('personForm').reset();$('editId').value='';$('paid').value='0';$('formTitle').textContent='Ongeza mchangiaji';$('saveBtn').textContent='＋ Hifadhi mchangiaji';$('cancelEdit').hidden=true; }
+  $('personForm').addEventListener('submit',e=>{
+    e.preventDefault();const name=$('name').value.trim();const promised=num($('promised').value),paid=num($('paid').value),id=$('editId').value;
+    if(!name){toast('Tafadhali jaza jina.');return}
+    if(paid>promised){if(!confirm('Kiasi alicholipa ni kikubwa kuliko ahadi. Unataka kuendelea?'))return}
+    if(id){const ix=people.findIndex(p=>p.id===id);if(ix>=0)people[ix]={...people[ix],name,phone:$('phone').value.trim(),promised,paid};toast('Taarifa zimehaririwa.')}
+    else{people.push({id:String(Date.now())+'_'+Math.random().toString(36).slice(2,7),name,phone:$('phone').value.trim(),promised,paid});toast('Mchangiaji ameongezwa.')}
+    persist();resetForm();
+  });
+  $('cancelEdit').addEventListener('click',resetForm);
+  $('peopleBody').addEventListener('click',e=>{
+    const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');
+    if(edit){const p=people.find(x=>x.id===edit.dataset.edit);if(!p)return;$('editId').value=p.id;$('name').value=p.name;$('phone').value=p.phone;$('promised').value=p.promised;$('paid').value=p.paid;$('formTitle').textContent='Hariri mchangiaji';$('saveBtn').textContent='Hifadhi mabadiliko';$('cancelEdit').hidden=false;$('name').focus();window.scrollTo({top:0,behavior:'smooth'})}
+    if(del){const p=people.find(x=>x.id===del.dataset.delete);if(p&&confirm('Una uhakika unataka kufuta '+p.name+'?')){people=people.filter(x=>x.id!==p.id);persist();toast('Mchangiaji amefutwa.');}}
+  });
+  $('search').addEventListener('input',render);$('clearSearch').addEventListener('click',()=>{$('search').value='';render()});
+  function csvCell(s){return '"'+String(s??'').replace(/"/g,'""')+'"'}
+  $('downloadCsv').addEventListener('click',()=>{
+    const rows=[['Jina la mchangiaji','Namba ya simu','Ahadi (TSh)','Amelipa (TSh)','Salio (TSh)','Hali']];
+    people.forEach(p=>rows.push([p.name,p.phone,p.promised,p.paid,p.promised-p.paid,status(p)[0]]));
+    const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');
+    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Mkeka_wa_Harusi.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);toast('CSV imepakuliwa.');
+  });
+  $('downloadPdf').addEventListener('click',()=>window.print());
+  $('shareWhatsApp').addEventListener('click',()=>{
+    if(!people.length){toast('Ongeza angalau mchangiaji mmoja kwanza.');return}
+    const promised=people.reduce((s,p)=>s+p.promised,0),paid=people.reduce((s,p)=>s+p.paid,0);
+    let msg='*MKEKA WA HARUSI — KAMATI YA HARUSI*\\n\\n';
+    msg+='Jumla ya ahadi: '+money(promised)+'\\nJumla iliyolipwa: '+money(paid)+'\\nBaki: '+money(promised-paid)+'\\n\\n';
+    people.forEach((p,i)=>{msg+=(i+1)+'. '+p.name+(p.phone?' ('+p.phone+')':'')+'\\n   Ahadi: '+money(p.promised)+' | Amelipa: '+money(p.paid)+' | Salio: '+money(p.promised-p.paid)+'\\n'});
+    msg+='\\nAsanteni kwa ushirikiano wenu. 🙏';
+    const url='https://wa.me/?text='+encodeURIComponent(msg);
+    window.open(url,'_blank','noopener');
+  });
+  try{const saved=localStorage.getItem(KEY);if(saved){const parsed=JSON.parse(saved);if(Array.isArray(parsed))people=parsed}}catch(e){}
+  render();
+})();
+</script>
+</body>
+</html>
